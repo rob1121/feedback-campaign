@@ -12,14 +12,12 @@ const settingReducer = (state = {
       break;
 
     case "SET_SETTING_CREATOR":
-      console.log(action);
       state = {
         ...state,
         creator: action.payload
       };
       break;
   }
-  console.log(state);
   return state;
 };
 

@@ -20,52 +20,35 @@ const sb = () => {
       key="1"
     />,
     <br key="2" />,
-    <Sidebar.Menu header="NAVIGATION" key="3" >
-      <ul>
+    <aside className="menu" style={{ fontSize: 14, paddingLeft: 20 }} key="3">
+      <p className="menu-label">
+        General
+      </p>
+      <ul className="menu-list">
+        <li><a>Team Settings</a></li>
+        <li>
+          <ul>
+            <li><a>Members</a></li>
+            <li><a>Plugins</a></li>
+            <li><a>Add a member</a></li>
+          </ul>
+        </li>
+        <li><a>Invitations</a></li>
+        <li><a>Cloud Storage Environment Settings</a></li>
+        <li><a>Authentication</a></li>
+
 
         <li>
-          <Link to="/"
-            style={{
-              fontSize: 14,
-              color: '#fff',
-            }}>
-            <span className="icon">
-              <i className="fa fa-home" />
-            </span>
-            <span>Home</span>
-          </Link>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/campaigns"
-            style={{
-              fontSize: 14,
-              color: '#fff',
-            }}>
-            <span className="icon">
-              <i className="fa fa-list" />
-            </span>
-            <span>Campaigns</span>
-          </Link>
+          <Link to="/campaigns">Campaigns</Link>
         </li>
         <li>
-          <Link to="/main"
-            style={{
-              fontSize: 14,
-              color: '#fff',
-            }}>
-            <span className="icon">
-              <i className="fa fa-list" />
-            </span>
-            <span>Main</span>
-          </Link>
+          <Link to="/main">Main</Link>
         </li>
       </ul>
-      {/* <Sidebar.Menu.Item title="Campaigns">
-      <Sidebar.Menu.Item title="List" href="/campaign" active={true} />
-      <Sidebar.Menu.Item title="Create Campaign" />
-    </Sidebar.Menu.Item>
-    <Sidebar.Menu.Item title="Logout" /> */}
-    </Sidebar.Menu>
+    </aside>
   ]);
 }
 
