@@ -7,11 +7,9 @@ import setting from "./reducers/settingReducer";
 import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux';
 import { Switch, Route, Link, Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
-import Main from "./containers/Main";
-import Dashboard from './components/Dashboard';
-import Campaigns from './components/Campaign/index';
-import NewCampaign from './components/NewCampaign/index';
 import Index from './containers/Index';
+import Home from './containers/Home';
+import Campaign from './components/Campaign/index';
 import SideBar from './components/SideBar';
 
 const history = createBrowserHistory()
@@ -36,16 +34,15 @@ render(
         <SideBar />
         <div className="columns">
           <div className="column is-8 is-offset-2">
-
             <div id="wrapper">
               <Switch>
-                <Route path={'/'} component={Index} />
+                <Route exact={true} path={'/'} component={Index} />
+                <Route exact={true} path={'/home'} component={Home} />
               </Switch>
             </div>
           </div>
         </div>
       </div>
-
     </ConnectedRouter >
   </Provider>,
   window.document.getElementById('app')

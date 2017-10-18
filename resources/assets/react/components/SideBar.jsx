@@ -1,6 +1,6 @@
 import React from 'react';
 import { push as Menu } from 'react-burger-menu';
-import { Switch, Route, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 var styles = {
   bmBurgerButton: {
     position: 'fixed',
@@ -32,22 +32,38 @@ var styles = {
     padding: '0.8em'
   },
   bmOverlay: {
-    background: 'rgba(0, 0, 0, 0.3)'
+    background: '#fff'
   }
 }
 
 export default class Example extends React.Component {
-  showSettings(event) {
-    event.preventDefault();
+  constructor() {
+    super();
+    this.state = {
+      isOpen: false,
+    };
+    
+    this.hideSideBar = this.hideSideBar.bind(this);
+  }
 
+  /**
+   * hide side bar
+   * 
+   * @memberof Example
+   */
+  hideSideBar() {
+    this.setState(() => ({isOpen: false}));
   }
 
   render() {
     return (
-      <Menu styles={styles} pageWrapId={"wrapper"}>
-
-        <Link to="/">Home</Link>
-        <Link to="/campaigns">Campaigns</Link>
+      <Menu  
+        isOpen={this.state.isOpen}  
+        styles={styles} 
+        pageWrapId={"wrapper"}
+      >
+        <NavLink exact={true} activeStyle={{color: '#fff'}} to="/">Index</NavLink>
+        <NavLink exact={true} activeStyle={{color: '#fff'}} to="/home">Home</NavLink>
       </Menu>
     );
   }
