@@ -8,6 +8,7 @@ import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-ro
 import { Switch, Route, Link, Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import Index from './containers/Index';
+import Login from './containers/Login';
 import Home from './containers/Home';
 import Campaign from './components/Campaign/index';
 import SideBar from './components/SideBar';
@@ -38,6 +39,7 @@ render(
               <Switch>
                 <Route exact={true} path={'/'} component={Index} />
                 <Route exact={true} path={'/home'} component={Home} />
+                <Route exact={true} path={'/auth'} component={Login} />
               </Switch>
             </div>
           </div>

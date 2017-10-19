@@ -9,9 +9,6 @@
     </head>
     <body>
     <div id="app"></div>
-    <script>
-        window.user = {!!Auth::user()!!};
-    </script>
     <script src="{{asset('js/main.js')}}"></script>
     </body>
 </html>

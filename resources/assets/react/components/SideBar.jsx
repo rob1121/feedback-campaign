@@ -42,7 +42,7 @@ export default class Example extends React.Component {
     this.state = {
       isOpen: false,
     };
-    
+
     this.hideSideBar = this.hideSideBar.bind(this);
   }
 
@@ -52,18 +52,20 @@ export default class Example extends React.Component {
    * @memberof Example
    */
   hideSideBar() {
-    this.setState(() => ({isOpen: false}));
+    this.setState(() => ({ isOpen: false }));
   }
 
   render() {
     return (
-      <Menu  
-        isOpen={this.state.isOpen}  
-        styles={styles} 
+      <Menu
+        isOpen={this.state.isOpen}
+        styles={styles}
         pageWrapId={"wrapper"}
       >
-        <NavLink exact={true} activeStyle={{color: '#fff'}} to="/">Index</NavLink>
-        <NavLink exact={true} activeStyle={{color: '#fff'}} to="/home">Home</NavLink>
+        <NavLink exact={true} activeStyle={{ color: '#fff' }} to="/">Index</NavLink>
+        <NavLink exact={true} activeStyle={{ color: '#fff' }} to="/home">Home</NavLink>
+        <hr />
+        <NavLink exact={true} activeStyle={{ color: '#fff' }} to="/auth">Login</NavLink>
       </Menu>
     );
   }

@@ -1,1 +1,1 @@
-export const API_USERS_CAPAIGNS = `/api/${window.user.id}/campaigns`;
+export const API_USERS_CAPAIGNS = `/api/campaigns`;
