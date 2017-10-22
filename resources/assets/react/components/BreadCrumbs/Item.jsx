@@ -1,5 +1,4 @@
 import React from 'react';
-import 'bulma';
 import PropTypes from 'prop-types';
 
 const BreadCrumbItem = ({ text, link, active }) =>

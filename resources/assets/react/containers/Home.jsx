@@ -1,24 +1,27 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import AuthGuardHOC from '../hoc/AuthGuard';
+import Campaigns from '../components/Campaign/index';
 
-const Home = ({ setting }) => (
-  <div>hey {setting.creator}</div>
+const styles = {
+  container: {
+    marginBottom: '10vh'
+  }
+};
+
+const Home = ({ campaigns, user }) => (
+  <section style={styles.container}>
+    <h1>Campaigns</h1>
+    <Campaigns user={user} />
+  </section>
 );
 
-const mapStateToProps = ({ setting }) => ({
-  setting,
+const mapStateToProps = ({ campaigns, user }) => ({
+  campaigns,
+  user
 });
 
-const mapDispatchToProps = dispatch => ({
-  // pSetQuery: q => dispatch(setQuery(q)).then(() => dispatch(fetchPaginateResult())),
-  // pFetchPaginateResult: (page = 1) => dispatch(fetchPaginateResult(page)),
-  // pFirst: () => dispatch(first()),
-  // pLast: () => dispatch(last()),
-  // pNext: () => dispatch(next()),
-  // pPrev: () => dispatch(prev()),
-  // pSetPerPage: val => dispatch(setPerPage(val)),
-  // pSetSelectedColumns: val => dispatch(setSelectedColumns(val)),
-});
+const mapDispatchToProps = dispatch => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(AuthGuardHOC(Home));

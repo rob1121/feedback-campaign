@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import axios from 'axios';
-import { API_USERS_CAPAIGNS } from '../../constant/routes';
+import { getHeader } from '../../actions/auth';
+import { campaignsUrl } from '../../config/config';
 import CampaignPresentation from './CampaignPrensentation';
 
 
@@ -19,14 +20,19 @@ export default class CampaignContainer extends Component {
   }
 
   componentDidMount() {
-    axios.get(API_USERS_CAPAIGNS).then(({ data }) => {
-      this.setState({ campaigns: data.campaign });
-    });
+    axios.get(campaignsUrl(this.props.user.id), { headers: getHeader() })
+      .then(({ data }) => {
+        this.setState({ campaigns: data.campaign });
+      });
   }
 
   render() {
     return (
-      <CampaignPresentation {...this.state} />
+      <div className="columns">
+        <div className="column" align="center">
+          <CampaignPresentation {...this.state} />
+        </div>
+      </div>
     );
   }
 }

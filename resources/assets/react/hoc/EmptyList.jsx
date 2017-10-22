@@ -1,10 +1,17 @@
 import React from 'react';
-import 'bulma';
 
 const EmptyList = key => ComponentWrapper => props => {
   return props[key]
-    ? <p className="has-text-centered">No Campaign found in your profile</p>
-    : <ComponentWrapper {...props} />;
+    ? (
+      <article className="message">
+        <div className="message-header">
+          <p>Campaign</p>
+        </div>
+        <div className="message-body">
+          <p>No Campaign found in your profile</p>
+        </div>
+      </article>
+    ) : <ComponentWrapper {...props} />;
 };
 
 export default EmptyList;

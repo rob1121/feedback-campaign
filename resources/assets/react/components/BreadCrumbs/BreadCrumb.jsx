@@ -1,5 +1,4 @@
 import React from 'react';
-import 'bulma';
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 import Item from './Item';

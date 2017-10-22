@@ -1,55 +1,19 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import LoginForm from '../components/Login/index';
+import { setUser } from '../actions/auth';
 import axios from 'axios';
 
+const Login = ({ setUser, user }) => <LoginForm user={user} setUser={setUser} />
 
-export default class Login extends Component {
-  constructor() {
-    super();
-    this.state = {
-      username: '',
-      password: '',
-    };
+const mapStateToProps = ({ setting, user }) => ({
+  setting,
+  user
+});
 
-    this.getAccessToken = this.getAccessToken.bind(this);
-    this.setUsername = this.setUsername.bind(this);
-    this.setPassword = this.setPassword.bind(this);
-  }
+const mapDispatchToProps = dispatch => ({
+  setUser: (user) => dispatch(setUser(user)),
+});
 
-  getAccessToken() {
-    let data = {
-      client_id: 2,
-      client_secret: 'fXAXwYnDsPTxQ0yzMOhyQhGuIZ4VMaZRrPAFsPti',
-      grant_type: 'password',
-      username: this.state.username,
-      password: this.state.password,
-    };
-
-    axios.post('/oauth/token', { ...data }).then((data) => console.log(data));
-  }
-
-  setUsername(e) {
-    this.setState(() => ({
-      ...this.state,
-      username: e,
-    }));
-  }
-
-  setPassword(e) {
-    this.setState(() => ({
-      ...this.state,
-      password: e,
-    }));
-  }
-
-  render() {
-    const { username, password } = this.state;
-
-    return (
-      <h1 align="center">
-        <input type="text" name="username" value={username} onChange={(e) => this.setUsername(e.target.value)} />
-        <input type="password" name="password" value={password} onChange={(e) => this.setPassword(e.target.value)} />
-        <button onClick={this.getAccessToken}>Login</button>
-      </h1>
-    );
-  }
-}
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

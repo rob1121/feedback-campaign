@@ -18,6 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/{user}/campaigns', function (User $user, Request $request) {
+Route::middleware('auth:api')->get('/{user}/campaigns', function (User $user, Request $request) {
     return $user->load('campaign');
 });

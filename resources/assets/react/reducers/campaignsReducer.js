@@ -1,14 +1,8 @@
-const settingReducer = (state = {
-  title: "setting",
-  creator: "rob"
-}, action) => {
+const settingReducer = (state = {}, action) => {
   switch (action.type) {
 
     case "SET_SETTING_TITLE":
-      state = {
-        ...state,
-        title: action.payload
-      };
+      state = action.payload;
       break;
 
     case "SET_SETTING_CREATOR":
